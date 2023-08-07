@@ -62,7 +62,7 @@ namespace ProyectoXDDD.Datos
             return _usuario;
 
         }
-
+        //GUARDAR CONTACTO XD
         public bool GuardarContacto(Usuario model)
         {
             bool respuesta;

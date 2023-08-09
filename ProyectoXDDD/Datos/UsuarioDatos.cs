@@ -72,24 +72,29 @@ namespace ProyectoXDDD.Datos
                 using (var conexion = new SqlConnection(cn.getCadenaSql()))
                 {
                     conexion.Open();
-                    SqlCommand cmd = new SqlCommand("InsertarUsuario", conexion);
+                    SqlCommand cmd = new SqlCommand("InsertarUsuarioNuevo", conexion);
                     cmd.Parameters.AddWithValue("Nombre", model.Nombre);
                     cmd.Parameters.AddWithValue("Email", model.Email);
                     cmd.Parameters.AddWithValue("Contrasenia", model.Contrasenia);
+
+                    // Agrega registros de depuración para imprimir los valores de los parámetros
+                    Console.WriteLine("Nombre: " + model.Nombre);
+                    Console.WriteLine("Email: " + model.Email);
+                    Console.WriteLine("Contrasenia: " + model.Contrasenia);
+
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                 }
                 respuesta = true;
             }
-
             catch (Exception ex)
             {
                 string error = ex.Message;
                 respuesta = false;
             }
-
             return respuesta;
         }
+
         //hola mundo
         public bool ActualizarContacto(int id, Usuario model)
         {

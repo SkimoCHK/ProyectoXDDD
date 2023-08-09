@@ -25,7 +25,7 @@ namespace ProyectoXDDD.Controllers
             var usuarioCreado = _usuarioDatos.GuardarContacto(model);
             if (usuarioCreado)
             {
-                return RedirectToAction("Guardar");
+                return RedirectToAction("Listar");
             }
             else
             {

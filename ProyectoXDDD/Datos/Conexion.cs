@@ -10,7 +10,7 @@ namespace ProyectoXDDD.Datos
             var Builder = new ConfigurationBuilder().SetBasePath
                 (Directory.GetCurrentDirectory()).AddJsonFile
                 ("" + "appsettings.json").Build();
-            cadenaSql = Builder.GetSection("ConnectionStrings:cadenaSql").Value;
+            cadenaSql = Builder.GetSection("ConnectionStrings:CadenaSQL").Value;
         }
 
         public string getCadenaSql()

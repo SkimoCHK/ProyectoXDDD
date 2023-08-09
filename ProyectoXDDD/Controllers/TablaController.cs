@@ -34,16 +34,25 @@ namespace ProyectoXDDD.Controllers
         }
 
         //para mostrar editar
-        public IActionResult Editar()
+        public IActionResult Editar(int id)
         {
-            return View();
+            var usuario = _usuarioDatos.ObtenerUsuario(id);
+            if (usuario != null)
+            {
+                return View(usuario);
+            }
+            return NotFound();
         }
 
-        //para editar
         [HttpPost]
         public IActionResult Editar(Usuario model)
         {
-            return View();
+            var usuarioActualizado = _usuarioDatos.ActualizarContacto(model.IDUSUARIO, model);
+            if (usuarioActualizado)
+            {
+                return RedirectToAction("Listar");
+            }
+            return View(model);
         }
 
         //para mostrar eliminar

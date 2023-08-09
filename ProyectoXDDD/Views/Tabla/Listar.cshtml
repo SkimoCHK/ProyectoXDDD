@@ -1,7 +1,37 @@
-﻿@model ProyectoXDDD.Models.Usuario;
+﻿@model IEnumerable<ProyectoXDDD.Models.Usuario>
+
 @{
-    ViewData["Title"] = "Listar";
+    ViewData["Usuarios"] = "Listar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Listar</h1>
+<div>
+    <h1>Lista de Contactos</h1>
+    <button asp-action="Guardar" asp-controller="Tabla" class="btn btn-succes bt-sm">Nuevo Usuario</button>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Nombre</td>
+                <td>Correo</td>
+                <td>Clave</td>
+            </tr>
+        </thead>
 
+        <tbody>
+            @foreach (var usuario in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => usuario.Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => usuario.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => usuario.Contrasenia)</td>
+                    <td>
+                        
+                        <button asp-action="Eliminar" asp-controller="Tabla" class="btn btn-warning bt-sm">Eliminar</button>
+                        <a asp-action="Editar" asp-controller="Tabla" asp-route-id="item.IDUSUARIO" class="btn btn-warning bt-sm">Editar</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

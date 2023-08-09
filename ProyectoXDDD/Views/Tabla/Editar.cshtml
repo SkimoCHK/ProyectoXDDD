@@ -1,0 +1,25 @@
+﻿@model ProyectoXDDD.Models.Usuario
+
+@{
+    ViewData["Title"] = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4">Editar Usuario</h1>
+    <form asp-action="Editar" asp-controller="Tabla" method="post">
+        <input type="hidden" asp-for="IDUSUARIO" />
+        <div class="form-group">
+            <label for="Nombre">Nombre</label>
+            <input type="text" id="Nombre" asp-for="Nombre" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <label for="Email">Correo electrónico</label>
+            <input type="email" id="Email" asp-for="Email" class="form-control" required />
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <a asp-action="Listar" asp-controller="Tabla" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
